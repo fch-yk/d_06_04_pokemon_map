@@ -1,6 +1,7 @@
 tmp/
 .vscode/
 tmp*.*
+images/
 
 # Created by https://www.gitignore.io
 
