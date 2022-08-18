@@ -67,8 +67,8 @@ def show_pokemon(request, pokemon_id):
     pokemon_img_url = request.build_absolute_uri(pokemon.image.url)
     serialized_pokemon = {
         'title_ru': pokemon.title,
-        'title_en': '',
-        'title_jp': '',
+        'title_en': pokemon.title_en,
+        'title_jp': pokemon.title_jp,
         'description': pokemon.description,
         'img_url': pokemon_img_url,
     }
