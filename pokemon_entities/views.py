@@ -65,12 +65,24 @@ def show_all_pokemons(request):
 def show_pokemon(request, pokemon_id):
     pokemon = Pokemon.objects.get(id=pokemon_id)
     pokemon_img_url = request.build_absolute_uri(pokemon.image.url)
+
+    if pokemon.parent_id is None:
+        previous_evolution = None
+    else:
+        parent = Pokemon.objects.get(id=pokemon.parent_id)
+        previous_evolution = {
+            'title_ru': parent.title,
+            'pokemon_id': parent.id,
+            'img_url': request.build_absolute_uri(parent.image.url),
+        }
+
     serialized_pokemon = {
         'title_ru': pokemon.title,
         'title_en': pokemon.title_en,
         'title_jp': pokemon.title_jp,
         'description': pokemon.description,
         'img_url': pokemon_img_url,
+        'previous_evolution': previous_evolution,
     }
 
     now = localtime()
