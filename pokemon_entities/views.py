@@ -76,6 +76,16 @@ def show_pokemon(request, pokemon_id):
             'img_url': request.build_absolute_uri(parent.image.url),
         }
 
+    child = pokemon.next_evolutions.first()
+    if child is None:
+        next_evolution = None
+    else:
+        next_evolution = {
+            'title_ru': child.title,
+            'pokemon_id': child.id,
+            'img_url': request.build_absolute_uri(child.image.url),
+        }
+
     serialized_pokemon = {
         'title_ru': pokemon.title,
         'title_en': pokemon.title_en,
@@ -83,6 +93,7 @@ def show_pokemon(request, pokemon_id):
         'description': pokemon.description,
         'img_url': pokemon_img_url,
         'previous_evolution': previous_evolution,
+        'next_evolution': next_evolution,
     }
 
     now = localtime()
