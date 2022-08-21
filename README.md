@@ -1,6 +1,6 @@
-# Map of pokemons
+# Pokémon map
 
-The Django-based site renders [pokemons](https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%BA%D0%B5%D0%BC%D0%BE%D0%BD) on the map.
+The Django-based site renders [Pokémon](https://en.wikipedia.org/wiki/Pok%C3%A9mon#Name) entities on the map.
 
 ## Prerequisites
 
@@ -9,6 +9,7 @@ Python 3.7 is required. You can download it [here](https://www.python.org/downlo
 ## Installing
 
 - Download the project files
+- It is recommended to use [venv](https://docs.python.org/3/library/venv.html?highlight=venv#module-venv) for project isolation
 - Set up packages:
 
 ```bash
@@ -31,30 +32,38 @@ ALLOWED_HOSTS=localhost,127.0.0.1
 TIME_ZONE=Europe/Moscow
 ```
 
-### Как запустить
+## Initializing a database
 
-Для запуска сайта вам понадобится Python третьей версии.
+- Make migrations:
 
-Скачайте код с GitHub. Затем установите зависимости
-
-```sh
-pip install -r requirements.txt
+```bash
+python manage.py makemigrations pokemon_entities
 ```
 
-Запустите разработческий сервер
+- Migrate:
 
-```sh
-python3 manage.py runserver
+```bash
+python manage.py migrate
 ```
 
-### Переменные окружения
+- Create a superuser:
 
-Часть настроек проекта берётся из переменных окружения. Чтобы их определить, создайте файл `.env` рядом с `manage.py` и запишите туда данные в таком формате: `ПЕРЕМЕННАЯ=значение`.
+```bash
+python manage.py createsuperuser
+```
 
-Доступны 2 переменные:
-- `DEBUG` — дебаг-режим. Поставьте True, чтобы увидеть отладочную информацию в случае ошибки.
-- `SECRET_KEY` — секретный ключ проекта
+## Using
 
-## Цели проекта
+- Run a development server:
 
-Код написан в учебных целях — это урок в курсе по Python и веб-разработке на сайте [Devman](https://dvmn.org).
+```bash
+python manage.py runserver
+```
+
+- Go to [the admin site](http://127.0.0.1:8000/admin/) and fill the base with Pokémon characteristics and entities
+- Go to [the site main page](http://127.0.0.1:8000/)
+
+## Project goals
+
+The project was created for educational purposes.
+It's a lesson for python and web developers at [Devman](https://dvmn.org)
