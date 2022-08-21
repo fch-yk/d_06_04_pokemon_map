@@ -1,18 +1,35 @@
-# Карта покемонов
+# Map of pokemons
 
-![screenshot](https://dvmn.org/filer/canonical/1563275070/172/)
+The Django-based site renders [pokemons](https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%BA%D0%B5%D0%BC%D0%BE%D0%BD) on the map.
 
-### Предметная область
+## Prerequisites
 
-Сайт для помощи по игре [Pokemon GO](https://www.pokemongo.com/en-us/). Это игра про ловлю [покемонов](https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D0%BA%D0%B5%D0%BC%D0%BE%D0%BD).
+Python 3.7 is required. You can download it [here](https://www.python.org/downloads/release/python-379/)
 
-Суть игры в том, что на карте периодически появляются покемоны, на определённый промежуток времени. Каждый игрок может поймать себе покемона, и пополнить свою личную коллекцию.
+## Installing
 
-На карте может быть сразу несколько особей одного и того же покемона: например, 3 Бульбазавра. Каждую особь могут поймать сразу несколько игроков. Если игрок поймал себе особь покемона, она исчезает для него, но остаётся для других.
+- Download the project files
+- Set up packages:
 
-В игре есть механика эволюции. Покемон одного вида может "эволюционировать" в другого. Так, например, Бульбазавр превращается в Ивизавра, а тот превращается в Венузавра.
+```bash
+pip install -r requirements.txt
+```
 
-![bulba evolution](https://dvmn.org/filer/canonical/1562265973/167/)
+- Set up environmental variables in your operating system or in .env file. The variables are:
+
+  - `DEBUG` (optional, `True` by default)
+  - `SECRET_KEY` (optional, `REPLACE_ME` by default)
+  - `ALLOWED_HOSTS` (obligatory when `DEBUG` is set to `False`)
+  - `TIME_ZONE` (optional, `Europe/Moscow` by default)
+
+To set up variables in .env file, create it in the root directory of the project and fill it up like this:
+
+```bash
+DEBUG=True
+SECRET_KEY=REPLACE_ME
+ALLOWED_HOSTS=localhost,127.0.0.1
+TIME_ZONE=Europe/Moscow
+```
 
 ### Как запустить
 

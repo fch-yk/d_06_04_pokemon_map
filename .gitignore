@@ -2,6 +2,8 @@ tmp/
 .vscode/
 tmp*.*
 images/
+pokemon_entities/migrations
+
 
 # Created by https://www.gitignore.io
 
